@@ -1,0 +1,2562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patel Kushal - Full Stack & AI Developer Portfolio</title>
+    <link rel="icon" href="assets/images/avatar-1.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Add these in the head section -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js">
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/particles.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body class="dark-theme">
+
+    
+    <!-- Loading Overlay -->
+    
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loader"></div>
+        <div class="loading-text">Loading Portfolio...</div>
+    </div>
+
+    <!-- Progress Indicator -->
+    <div class="progress-indicator">
+        <div class="progress-bar-indicator" id="progressBar"></div>
+    </div>
+
+    <!-- Flash Notification -->
+    <div id="flashNotification" class="flash-notification"></div>
+
+    <!-- Particles Background -->
+    <div class="particles-container" id="particlesContainer"></div>
+
+    <!-- Top Controls - Only Theme Toggle remains -->
+    <div class="top-controls">
+        <!-- Theme Toggle -->
+        <div class="theme-toggle" id="themeToggle"></div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar glass-effect">
+        <!-- Profile Section -->
+        <div class="text-center mb-8">
+            <div class="avatar-container floating-animation">
+                <img src="./assets/images/me.png" alt="Patel Kushal" class="rounded-full">
+                <!-- <div class="status-indicator"></div> -->
+            </div>
+            <h1 class="text-xl font-bold text-white mb-2">Patel Kushal</h1>
+            <p class="text-yellow-500 text-sm font-medium mb-4">Full Stack & AI Developer</p>
+            <div class="typing-text text-gray-300 text-xs">
+                Crafting digital experiences with passion...
+            </div>
+        </div>
+
+         <!-- Contact Info - Moved up -->
+        <div class="mb-8">
+            <h3 class="text-yellow-500 text-sm font-semibold mb-4 uppercase tracking-wide">Contact</h3>
+            <div class="space-y-3">
+                <div class="flex items-center text-sm clickable-item" onclick="handleEmailClick()">
+                    <i class="fas fa-envelope w-4 mr-3 text-yellow-500"></i>
+                    <span>KUSHALPATEL.ict22@adaniuni.ac.in</span>
+                </div>
+                <div class="flex items-center text-sm clickable-item" onclick="handlePhoneClick()">
+                    <i class="fas fa-phone w-4 mr-3 text-yellow-500"></i>
+                    <span>+91 (901) 626-1380</span>
+                </div>
+                <div class="flex items-center text-sm">
+                    <i class="fas fa-birthday-cake w-4 mr-3 text-yellow-500"></i>
+                    <span>October 18, 2003</span>
+                </div>
+                <div class="flex items-center text-sm">
+                    <i class="fas fa-map-marker-alt w-4 mr-3 text-yellow-500"></i>
+                    <span>Ahmedabad, Gujarat, India</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Social Links - Moved up -->
+        <div class="mb-8">
+            <h3 class="text-yellow-500 text-sm font-semibold mb-4 uppercase tracking-wide">Social</h3>
+            <div class="flex space-x-4">
+                <a href="https://www.linkedin.com/in/kushal1533/" target="_blank" class="text-gray-300 hover:text-yellow-500 text-lg">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/Kushal1250" target="_blank" class="text-gray-300 hover:text-yellow-500 text-lg">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://x.com/Kushal_53" target="_blank" class="text-gray-300 hover:text-yellow-500 text-lg">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://www.instagram.com/kushal___53/" target="_blank" class="text-gray-300 hover:text-yellow-500 text-lg">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Download CV Button -->
+        <div class="sidebar-download">
+            <a href="#" class="sidebar-download-btn" id="sidebarDownloadCV">
+                <i class="fas fa-download mr-2"></i> Download CV
+            </a>
+        </div>
+
+        <!-- Navigation - Moved down -->
+        <nav class="mb-8 mt-8">
+            <h3 class="text-yellow-500 text-sm font-semibold mb-4 uppercase tracking-wide">Navigation</h3>
+            <ul class="space-y-2">
+                <li><a href="#" class="nav-link hover:text-yellow-500 block py-2 active" onclick="showSection('about')">About</a></li>
+                <li><a href="#" class="nav-link hover:text-yellow-500 block py-2" onclick="showSection('resume')">Resume</a></li>
+                <li><a href="#" class="nav-link hover:text-yellow-500 block py-2" onclick="showSection('education')">Education</a></li>
+                <li><a href="#" class="nav-link hover:text-yellow-500 block py-2" onclick="showSection('experience')">Experience</a></li>
+                <li><a href="#" class="nav-link hover:text-yellow-500 block py-2" onclick="showSection('certifications')">Certifications</a></li>
+                <li><a href="#" class="nav-link hover:text-yellow-500 block py-2" onclick="showSection('skills')">Skills</a></li>
+                <li><a href="#" class="nav-link hover:text-yellow-500 block py-2" onclick="showSection('projects')">Projects</a></li>
+                <li><a href="#" class="nav-link hover:text-yellow-500 block py-2" onclick="showSection('contact')">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- About Section -->
+        <section id="about" class="section-visible">
+            <div class="glass-card rounded-xl p-8 mb-8">
+                <h2 class="text-3xl font-bold text-white mb-6 gradient-text">About Me</h2>
+                <div class="text-gray-300 space-y-4 leading-relaxed">
+                    <p>
+                        Hey there! I'm <strong class="text-yellow-500">Kushal Patel</strong>, a dedicated Full Stack Developer and AI aficionado based in Ahmedabad. Currently, I'm pursuing a B.Tech in ICT at Adani University (2022–2026), where I've honed skills in React, Node.js, Python, and cloud platforms.
+                    </p>
+                    <p>
+                        Recently, I launched a heart disease prediction tool that blends a sleek React front end with Node.js services and a custom Python ML engine. I've also built a smart vision system using YOLOv8 and Tesseract OCR, along with an interactive PyQt5 AI assistant that responds to voice commands and live data queries.
+                    </p>
+                    <p>
+                        I thrive on crafting intuitive interfaces, leveraging Tailwind CSS and subtle animations to make every interaction feel smooth. Learning is my compass—I'm exploring model fine-tuning, scalable architectures, and sharing my discoveries in my blog and GitHub contributions.
+                    </p>
+                </div>
+
+                <!-- Stats -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number" id="projectsCount">15+</div>
+                        <div class="stat-label">Projects Completed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="experienceYears">0</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="certificationsCount">12+</div>
+                        <div class="stat-label">Certifications</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="technologiesCount">20+</div>
+                        <div class="stat-label">Technologies</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- What I'm Doing -->
+<div class="glass-card rounded-xl p-8 mb-8">
+    <h3 class="text-2xl font-bold text-white mb-6 gradient-text">What I'm Doing</h3>
+    <div class="grid md:grid-cols-2 gap-6">
+        
+        <!-- Full-Stack Development -->
+        <div class="card-hover glass-effect rounded-xl p-6">
+            <div class="flex items-start space-x-4">
+                <div class="w-12 h-12 bg-yellow-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-laptop-code text-black text-lg"></i>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold text-lg mb-2">Full-Stack Web Development</h4>
+                    <p class="text-gray-300 text-sm">Building scalable, responsive web apps using React, Node.js, MongoDB, and Express with seamless authentication, dashboards, and cloud deployment.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI & ML Projects -->
+        <div class="card-hover glass-effect rounded-xl p-6">
+            <div class="flex items-start space-x-4">
+                <div class="w-12 h-12 bg-yellow-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-brain text-black text-lg"></i>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold text-lg mb-2">AI/ML Model Integration</h4>
+                    <p class="text-gray-300 text-sm">Deploying machine learning models—like heart disease and spam detection—into real-time systems with web interfaces and API support.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Smart Vision Systems -->
+        <div class="card-hover glass-effect rounded-xl p-6">
+            <div class="flex items-start space-x-4">
+                <div class="w-12 h-12 bg-yellow-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-video text-black text-lg"></i>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold text-lg mb-2">Smart Vision Detection</h4>
+                    <p class="text-gray-300 text-sm">Implementing YOLOv8, OpenCV, and Tesseract OCR for object tracking, text detection, license plate reading, and real-time alert systems.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Assistant -->
+        <div class="card-hover glass-effect rounded-xl p-6">
+            <div class="flex items-start space-x-4">
+                <div class="w-12 h-12 bg-yellow-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-robot text-black text-lg"></i>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold text-lg mb-2">AI Voice Assistant</h4>
+                    <p class="text-gray-300 text-sm">Creating a multi-screen PyQt5 assistant with real-time chat, voice recognition, system automation, and dynamic animations.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+            <!-- Testimonials -->
+            <div class="glass-card rounded-xl p-8">
+                <h3 class="text-2xl font-bold text-white mb-6 gradient-text">What Others Say</h3>
+                <div class="space-y-6">
+                    <div class="testimonial-card">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-user text-black"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-2">Mr. Dhiraj Poojara</h4>
+                                <p class="text-gray-300 text-sm mb-2">
+                                    Kushal's dedication and technical expertise transformed our machine learning integration. His heart disease predictor was both accurate and user-friendly, earning praise from faculty and peers alike.
+                                </p>
+                                <p class="text-yellow-500 text-xs">— Mr. Dhiraj Poojara, CEO, Royal Technosoft P Limited, Ahmedabad, Gujarat</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-user text-black"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-2">Ms. Rohan Desai</h4>
+                                <p class="text-gray-300 text-sm mb-2">
+                                    Working with Kushal on the smart vision project was seamless. He consistently demonstrated creativity, problem-solving skills, and a drive for excellence.
+                                </p>
+                                <p class="text-yellow-500 text-xs">— Ms. Rohan Desai, Teaching Assistant , Internship Studio, Pune, Maharashtra </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-user text-black"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-2">Ms. Pallavi</h4>
+                                <p class="text-gray-300 text-sm mb-2">
+                                    Kushal's communication and collaboration skills stood out during our AI assistant development. His proactive approach and clean code practices made the project a success.
+                                </p>
+                                <p class="text-yellow-500 text-xs"> — Ms. Pallavi, Hr-Project Manager, Grownited, Pune, Maharashtra</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-user text-black"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-2">Mr. Shrey K</h4>
+                                <p class="text-gray-300 text-sm mb-2">
+                                Kushal consistently brings innovation to every project.
+                      His ability to merge AI with real-time systems is
+                      impressive and shows a deep understanding of both frontend
+                      and backend technologies.
+                                </p>
+                                <p class="text-yellow-500 text-xs"> —Ms. Shrey K, Software Engineer, Royal Technosoft Pvt. Limited, Ahmedabad, Gujarat</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Resume Section -->
+        <!-- Resume Section -->
+<!-- Resume Section -->
+<section id="resume" class="section-hidden">
+    <div class="glass-card rounded-xl p-8">
+        <h2 class="text-3xl font-bold text-white mb-6 gradient-text">Resume</h2>
+        <div class="text-gray-300 space-y-6">
+            <div class="text-center">
+                <h3 class="text-xl font-semibold text-yellow-500 mb-2">Patel Kushal</h3>
+                <p class="text-gray-400 text-sm font-medium mb-4">Full Stack & AI Developer</p>
+                <div class="flex flex-wrap justify-center gap-4 text-sm">
+                    <span class="flex items-center">
+                        <i class="fas fa-map-marker-alt mr-2 text-yellow-500"></i>
+                        Ahmedabad, Gujarat
+                    </span>
+                    <span class="flex items-center">
+                        <i class="fas fa-envelope mr-2 text-yellow-500"></i>
+                        patelkushal1533@gmail.com
+                    </span>
+                    <span class="flex items-center">
+                        <i class="fas fa-phone mr-2 text-yellow-500"></i>
+                        +91-9016261380
+                    </span>
+                </div>
+                <div class="flex justify-center space-x-4 mt-2">
+                    <a href="https://github.com/kushal1250" target="_blank" class="flex items-center text-gray-300 hover:text-yellow-500">
+                        <i class="fab fa-github mr-1"></i> github.com/kushal1250
+                    </a>
+                    <a href="https://linkedin.com/in/kushal1533" target="_blank" class="flex items-center text-gray-300 hover:text-yellow-500">
+                        <i class="fab fa-linkedin mr-1"></i> linkedin.com/in/kushal1533
+                    </a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-600 pt-6">
+                <h4 class="text-lg font-semibold text-white mb-4">Professional Summary</h4>
+                <p class="text-gray-300 leading-relaxed">
+                    Passionate Full Stack Developer pursuing a B.Tech in ICT at Adani University (expected 2026) with a 7.64 GPA. 
+                    Developed multiple production-grade applications including a Heart Disease Prediction Web App integrating 
+                    React.js, Node.js, and Python ML models. Proficient in building responsive UIs, RESTful APIs, and secure 
+                    authentication systems. Seeking to leverage my technical skills in a dynamic environment as a Full Stack Developer.
+                </p>
+            </div>
+            
+            <div class="border-t border-gray-600 pt-6">
+                <h4 class="text-lg font-semibold text-white mb-4">Education</h4>
+                <div class="space-y-4">
+                    <div>
+                        <div class="flex justify-between items-center mb-1">
+                            <h5 class="text-yellow-500 font-medium">Adani University, ICT</h5>
+                            <span class="text-gray-400 text-sm">Oct 2022 – May 2026</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-2">Bachelor of Technology in Information and Communication Technology</p>
+                        <p class="text-gray-300 text-sm">GPA: 7.64/10</p>
+                        <ul class="list-disc list-inside text-gray-300 text-sm mt-2 ml-4 space-y-1">
+                            <li>Key Courses: Web Technologies, Data Structures, DBMS, AI/ML, Cloud Computing</li>
+                            <li>Developed multiple full-stack projects with React and Node.js</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-1">
+                            <h5 class="text-yellow-500 font-medium">Saint Joseph's High School</h5>
+                            <span class="text-gray-400 text-sm">June 2020 – March 2022</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-2">Higher Secondary Education (Science Stream)</p>
+                        <p class="text-gray-300 text-sm">Marks: 408/650</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-600 pt-6">
+                <h4 class="text-lg font-semibold text-white mb-4">Experience</h4>
+                <div class="space-y-6">
+                    <div>
+                        <div class="flex justify-between items-center mb-1">
+                            <h5 class="text-yellow-500 font-medium">AI/ML & Full Stack Intern</h5>
+                            <span class="text-gray-400 text-sm">June 1 – July 5, 2025</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-2">Grownited Pvt. Ltd., Ahmedabad</p>
+                        <ul class="list-disc list-inside text-gray-300 text-sm ml-4 space-y-1">
+                            <li>Developed end-to-end web applications with ML integration for real-world clients</li>
+                            <li>Built responsive frontend interfaces using React.js and modern UI frameworks</li>
+                            <li>Implemented backend APIs with Node.js and Express.js</li>
+                            <li>Integrated machine learning workflows into web platforms for real-time predictions</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2 mt-2">
+                            <span class="px-2 py-1 bg-yellow-500 bg-opacity-10 text-yellow-500 text-xs rounded">React</span>
+                            <span class="px-2 py-1 bg-yellow-500 bg-opacity-10 text-yellow-500 text-xs rounded">Node.js</span>
+                            <span class="px-2 py-1 bg-yellow-500 bg-opacity-10 text-yellow-500 text-xs rounded">MongoDB</span>
+                            <span class="px-2 py-1 bg-yellow-500 bg-opacity-10 text-yellow-500 text-xs rounded">Python</span>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="flex justify-between items-center mb-1">
+                            <h5 class="text-yellow-500 font-medium">Teaching Assistant & Doubt Solver</h5>
+                            <span class="text-gray-400 text-sm">Sept 1 – Dec 1, 2024</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-2">Royal Technosoft P. Limited, Ahmedabad</p>
+                        <ul class="list-disc list-inside text-gray-300 text-sm ml-4 space-y-1">
+                            <li>Mentored 50+ students in programming fundamentals (C, C++, HTML, CSS)</li>
+                            <li>Conducted lab sessions and debugging workshops</li>
+                            <li>Reviewed assignments and provided code quality feedback</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <div class="flex justify-between items-center mb-1">
+                            <h5 class="text-yellow-500 font-medium">AI Intern</h5>
+                            <span class="text-gray-400 text-sm">Feb 1 – May 6, 2024</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-2">Internship Studio (Remote)</p>
+                        <ul class="list-disc list-inside text-gray-300 text-sm ml-4 space-y-1">
+                            <li>Built ML models for classification and predictive analysis</li>
+                            <li>Performed data preprocessing and feature engineering</li>
+                            <li>Optimized model performance using various metrics</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2 mt-2">
+                            <span class="px-2 py-1 bg-yellow-500 bg-opacity-10 text-yellow-500 text-xs rounded">Python</span>
+                            <span class="px-2 py-1 bg-yellow-500 bg-opacity-10 text-yellow-500 text-xs rounded">scikit-learn</span>
+                            <span class="px-2 py-1 bg-yellow-500 bg-opacity-10 text-yellow-500 text-xs rounded">pandas</span>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="flex justify-between items-center mb-1">
+                            <h5 class="text-yellow-500 font-medium">AWS Intern</h5>
+                            <span class="text-gray-400 text-sm">Feb 1 – May 6, 2024</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-2">Internship Studio (Remote)</p>
+                        <ul class="list-disc list-inside text-gray-300 text-sm ml-4 space-y-1">
+                            <li>Deployed and managed applications on AWS (EC2, S3, Lambda)</li>
+                            <li>Configured IAM roles and security policies</li>
+                            <li>Automated tasks using Lambda functions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-600 pt-6">
+                <h4 class="text-lg font-semibold text-white mb-4">Technical Skills</h4>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <h5 class="text-yellow-500 font-semibold mb-2">Languages</h5>
+                        <p class="text-gray-300 text-sm">Python, JavaScript, Java, C++, SQL, HTML, CSS</p>
+                    </div>
+                    <div>
+                        <h5 class="text-yellow-500 font-semibold mb-2">Frontend</h5>
+                        <p class="text-gray-300 text-sm">React.js, Tailwind CSS, Bootstrap, Material UI</p>
+                    </div>
+                    <div>
+                        <h5 class="text-yellow-500 font-semibold mb-2">Backend</h5>
+                        <p class="text-gray-300 text-sm">Node.js, Express.js, Flask, REST APIs</p>
+                    </div>
+                    <div>
+                        <h5 class="text-yellow-500 font-semibold mb-2">Databases</h5>
+                        <p class="text-gray-300 text-sm">MongoDB, MySQL, Firebase</p>
+                    </div>
+                    <div>
+                        <h5 class="text-yellow-500 font-semibold mb-2">AI/ML</h5>
+                        <p class="text-gray-300 text-sm">scikit-learn, pandas, OpenCV, TensorFlow</p>
+                    </div>
+                    <div>
+                        <h5 class="text-yellow-500 font-semibold mb-2">Tools</h5>
+                        <p class="text-gray-300 text-sm">Git, VS Code, AWS, Docker, Postman</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-600 pt-6">
+                <h4 class="text-lg font-semibold text-white mb-4">Projects</h4>
+                <div class="space-y-4">
+                    <div>
+                        <h5 class="text-yellow-500 font-medium">Jarvis: Intelligent Personal Assistant</h5>
+                        <p class="text-gray-300 text-sm mb-2">
+                            Multi-functional AI assistant with speech recognition, real-time search, automation, and face authentication.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-yellow-500 bg-opacity-10 text-yellow-500 text-xs rounded">Python</span>
+                            <span class="px-2 py-1 bg-yellow-500 bg-opacity-10 text-yellow-500 text-xs rounded">PyQt5</span>
+                            <span class="px-2 py-1 bg-yellow-500 bg-opacity-10 text-yellow-500 text-xs rounded">OpenCV</span>
+                        </div>
+                        <a href="https://github.com/kushal1250/JARVIS" target="_blank" class="text-yellow-500 text-xs mt-1 inline-block">
+                            <i class="fab fa-github mr-1"></i>View on GitHub
+                        </a>
+                    </div>
+                    
+                    <div>
+                        <h5 class="text-yellow-500 font-medium">Heart Disease Prediction Web App</h5>
+                        <p class="text-gray-300 text-sm mb-2">
+                            Full-stack ML application with user/admin dashboards, Google login, and result sharing via WhatsApp/email.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-yellow-500 bg-opacity-10 text-yellow-500 text-xs rounded">React</span>
+                            <span class="px-2 py-1 bg-yellow-500 bg-opacity-10 text-yellow-500 text-xs rounded">Node.js</span>
+                            <span class="px-2 py-1 bg-yellow-500 bg-opacity-10 text-yellow-500 text-xs rounded">Flask</span>
+                        </div>
+                        <a href="https://github.com/kushal1250/v0-heart" target="_blank" class="text-yellow-500 text-xs mt-1 inline-block">
+                            <i class="fab fa-github mr-1"></i>View on GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-600 pt-6">
+                <h4 class="text-lg font-semibold text-white mb-4">Certifications</h4>
+                <ul class="text-gray-300 text-sm space-y-2">
+                    <li class="flex items-start">
+                        <i class="fas fa-certificate text-yellow-500 mt-1 mr-2"></i>
+                        <span>Oracle Cloud Infrastructure 2024 Generative AI Certified Professional (July 2024)</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-certificate text-yellow-500 mt-1 mr-2"></i>
+                        <span>Oracle Cloud Data Management 2023 Certified Foundations Associate (August 2024)</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-certificate text-yellow-500 mt-1 mr-2"></i>
+                        <span>Programming & Web Basics - Royal Technosoft (Sept-Dec 2024)</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-certificate text-yellow-500 mt-1 mr-2"></i>
+                        <span>Multiple Forage Virtual Internships (British Airways, Walmart, J.P. Morgan, etc.)</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="border-t border-gray-600 pt-6">
+                <h4 class="text-lg font-semibold text-white mb-4">Languages</h4>
+                <p class="text-gray-300">English (Professional), Hindi (Fluent), Gujarati (Native)</p>
+            </div>
+            
+            <div class="border-t border-gray-600 pt-6 text-center">
+                <a href="./Kushal-Resume.pdf" download class="btn-primary inline-block">
+                    <i class="fas fa-download mr-2"></i> Download Full Resume
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+        <!-- Education Section -->
+        <section id="education" class="section-hidden">
+            <div class="glass-card rounded-xl p-8">
+                <h2 class="text-3xl font-bold text-white mb-6 gradient-text">Education</h2>
+                <div class="education-timeline">
+                    <div class="education-item">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-semibold text-white">Bachelor of Technology in ICT</h3>
+                                <p class="text-yellow-500 font-medium">Adani University, Ahmedabad</p>
+                            </div>
+                            <span class="text-gray-400 text-sm">Oct 2022 – May 2026</span>
+                        </div>
+                        <div class="mb-4">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <span class="text-yellow-500 font-semibold">GPA:</span>
+                                <span class="text-white">7.64/10</span>
+                            </div>
+                        </div>
+                        <div class="text-gray-300 space-y-2">
+                            <p><strong>Specialization:</strong> Information and Communication Technology (ICT) with emphasis on modern web technologies, system architecture, AI, and cybersecurity.</p>
+                            <p><strong>Key Coursework:</strong></p>
+                            <ul class="list-disc list-inside text-sm space-y-1 ml-4">
+                                <li>Web Technologies & Development</li>
+                                <li>Data Structures & Algorithms</li>
+                                <li>Operating Systems</li>
+                                <li>Database Management Systems</li>
+                                <li>Software Engineering</li>
+                                <li>Artificial Intelligence & Machine Learning</li>
+                                <li>Computer Networks</li>
+                                <li>Cloud Computing (AWS)</li>
+                                <li>Information Security</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="education-item">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-semibold text-white">Higher Secondary Education</h3>
+                                <p class="text-yellow-500 font-medium">Saint Joseph's High School, Vijapur</p>
+                            </div>
+                            <span class="text-gray-400 text-sm">June 2020 – March 2022</span>
+                        </div>
+                        <div class="mb-4">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <span class="text-yellow-500 font-semibold">Total Marks:</span>
+                                <span class="text-white">408/650</span>
+                            </div>
+                        </div>
+                        <div class="text-gray-300 space-y-2">
+                            <p><strong>Stream:</strong> Science (Physics, Chemistry, Mathematics, Computer Science)</p>
+                            <p>Focused on Physics, Chemistry, Mathematics, and Computer Science. Developed logical reasoning and analytical foundations that transitioned effectively into programming and engineering education.</p>
+                            <p><strong>Key Achievements:</strong></p>
+                            <ul class="list-disc list-inside text-sm space-y-1 ml-4">
+                                <li>Consistent academic performance with strong foundation in mathematics and sciences</li>
+                                <li>Early exposure to computer science and programming concepts</li>
+                                <li>Participated in various science and mathematics competitions</li>
+                                <li>Developed strong analytical and problem-solving skills</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="section-hidden">
+            <div class="glass-card rounded-xl p-8">
+                <h2 class="text-3xl font-bold text-white mb-6 gradient-text">Experience</h2>
+                <div class="experience-timeline">
+                    <div class="experience-item">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-semibold text-white">AI/ML & Full Stack Intern</h3>
+                                <p class="text-yellow-500 font-medium">Grownited Pvt. Ltd. – Ahmedabad, Gujarat</p>
+                            </div>
+                            <span class="text-gray-400 text-sm">June 1 – July 5, 2025</span>
+                        </div>
+                        <div class="text-gray-300 space-y-2">
+                            <p>Contributed to the full-stack development and ML pipeline integration of live client-facing applications. Used React for frontend, Node.js & Express.js for backend, and MongoDB for data storage.</p>
+                            <ul class="list-disc list-inside text-sm space-y-1 ml-4">
+                                <li>Developed end-to-end web applications with ML integration for real-world clients</li>
+                                <li>Built responsive frontend interfaces using React.js and modern UI frameworks</li>
+                                <li>Implemented backend APIs with Node.js and Express.js for scalable applications</li>
+                                <li>Integrated machine learning workflows into web platforms for real-time predictions</li>
+                                <li>Developed user authentication and authorization systems</li>
+                                <li>Worked with MongoDB for database design and management</li>
+                            </ul>
+                            <p><strong>Tools Used:</strong> React, Node.js, MongoDB, Git, Python, Express.js, JWT, REST APIs</p>
+                        </div>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-semibold text-white">Teaching Assistant & Doubt Solver</h3>
+                                <p class="text-yellow-500 font-medium">Royal Technosoft P. Limited – Ahmedabad, Gujarat</p>
+                            </div>
+                            <span class="text-gray-400 text-sm">Sept 1 – Dec 1, 2024</span>
+                        </div>
+                        <div class="text-gray-300 space-y-2">
+                            <p>Guided over 50 students through programming concepts in C, C++, HTML, and CSS. Reviewed code, led lab sessions, and supported live workshops.</p>
+                            <ul class="list-disc list-inside text-sm space-y-1 ml-4">
+                                <li>Assisted students in resolving conceptual and practical doubts in programming fundamentals</li>
+                                <li>Mentored students in programming best practices through hands-on guidance</li>
+                                <li>Reviewed assignments and provided actionable feedback to improve code quality</li>
+                                <li>Supported instructors during workshops and live sessions for effective learning delivery</li>
+                                <li>Conducted lab sessions and debugging sessions for students</li>
+                                <li>Developed teaching materials and coding exercises for better understanding</li>
+                            </ul>
+                            <p><strong>Tools Used:</strong> VS Code, Turbo C++, Git, Online IDEs, Teaching Platforms</p>
+                        </div>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-semibold text-white">AI Intern</h3>
+                                <p class="text-yellow-500 font-medium">Internship Studio – Remote, India</p>
+                            </div>
+                            <span class="text-gray-400 text-sm">Feb 1 – May 6, 2024</span>
+                        </div>
+                        <div class="text-gray-300 space-y-2">
+                            <p>Developed machine learning models for classification and predictive analysis using scikit-learn, pandas, and NumPy. Worked on data preprocessing, feature engineering, and performance optimization.</p>
+                            <ul class="list-disc list-inside text-sm space-y-1 ml-4">
+                                <li>Built and tested machine learning models for classification and prediction tasks</li>
+                                <li>Participated in comprehensive data preprocessing and feature selection processes</li>
+                                <li>Conducted model evaluation and performance optimization using various metrics</li>
+                                <li>Worked on real-world datasets for practical machine learning applications</li>
+                                <li>Implemented data visualization techniques for better insights and reporting</li>
+                                <li>Collaborated with team members on end-to-end ML project development</li>
+                            </ul>
+                            <p><strong>Tools Used:</strong> Python, scikit-learn, pandas, NumPy, matplotlib, Jupyter Notebook, seaborn</p>
+                        </div>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-semibold text-white">AWS Intern</h3>
+                                <p class="text-yellow-500 font-medium">Internship Studio – Remote, India</p>
+                            </div>
+                            <span class="text-gray-400 text-sm">June 2020 – March 2022</span>
+                        </div>
+                        <div class="text-gray-300 space-y-2">
+                            <p>Deployed and managed scalable applications on AWS using services like EC2, S3, IAM, Lambda, and CloudWatch. Automated tasks through Lambda functions and gained experience in cloud infrastructure.</p>
+                            <ul class="list-disc list-inside text-sm space-y-1 ml-4">
+                                <li>Gained hands-on experience in deploying and managing cloud-based applications</li>
+                                <li>Worked on setting up compute instances, storage buckets, and IAM roles for secure access</li>
+                                <li>Implemented serverless functions using AWS Lambda for automation</li>
+                                <li>Monitored applications and infrastructure using CloudWatch and other AWS tools</li>
+                                <li>Learned best practices for cloud architecture and security</li>
+                                <li>Worked on DevOps pipelines and automated deployment processes</li>
+                            </ul>
+                            <p><strong>Tools Used:</strong> Amazon EC2, S3, IAM, Lambda, CloudWatch, AWS CLI, CloudFormation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <!-- Certifications Section -->
+<!-- Certifications Section -->
+<section id="certifications" class="section-hidden">
+    <div class="glass-card rounded-xl p-8">
+        <h2 class="text-3xl font-bold text-white mb-6 gradient-text">Certifications</h2>
+        <div class="certificate-grid">
+            
+            <!-- Oracle Certifications -->
+            <div class="certificate-card group">
+                <div class="flex items-start justify-between mb-4">
+                    <div>
+                        <h3 class="text-lg font-semibold text-white group-hover:text-yellow-400 transition-colors">Oracle Fusion Cloud Applications HCM Process Essentials Certified - Rel 1</h3>
+                        <p class="text-yellow-500 text-sm flex items-center gap-1">
+                            <i class="fas fa-building"></i> Oracle 
+                            <span class="text-gray-400 mx-1">|</span> 
+                            <i class="fas fa-calendar-alt"></i> June 2025
+                        </p>
+                    </div>
+                    <i class="fas fa-certificate text-yellow-500 text-xl"></i>
+                </div>
+                <p class="text-gray-300 text-sm mb-4">Certified in Oracle Fusion Cloud Applications HCM Process Essentials with expertise in Human Capital Management processes.</p>
+                
+                <div class="certificate-actions">
+                    <div class="flex items-center gap-1 text-gray-400 text-xs">
+                        <i class="fas fa-id-card"></i>
+                        <span>Credential ID: 312671676OMBPHCMCFA1</span>
+                    </div>
+                    <div class="certificate-buttons mt-2">
+                        <a href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=EC1AA1FF24DF5A48F8009566B340EAD49F96A9300589613ACD20990DC9FA0DB1" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="btn-secondary text-xs hover:bg-yellow-600 transition-colors">
+                            <i class="fas fa-external-link-alt mr-1"></i> View
+                        </a>
+                        <a href="./cetifications/eCertificate.pdf" 
+                           download="./cetifications/eCertificate.pdf" 
+                           class="btn-secondary text-xs hover:bg-yellow-600 transition-colors"
+                           onclick="showDownloadMessage('Oracle Fusion Cloud Applications HCM Process Essentials Certified - Rel 1 certificate downloaded successfully')">
+                            <i class="fas fa-download mr-1"></i> Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Oracle Cloud Data Management -->
+            <div class="certificate-card group">
+                <div class="flex items-start justify-between mb-4">
+                    <div>
+                        <h3 class="text-lg font-semibold text-white group-hover:text-yellow-400 transition-colors">Oracle Cloud Data Management 2023 Certified Foundations Associate</h3>
+                        <p class="text-yellow-500 text-sm flex items-center gap-1">
+                            <i class="fas fa-building"></i> Oracle 
+                            <span class="text-gray-400 mx-1">|</span> 
+                            <i class="fas fa-calendar-alt"></i> August 2024
+                        </p>
+                    </div>
+                    <i class="fas fa-certificate text-yellow-500 text-xl"></i>
+                </div>
+                <p class="text-gray-300 text-sm mb-4">Certified in Oracle Cloud Data Management with foundational knowledge of data management in Oracle Cloud.</p>
+                
+                <div class="certificate-actions">
+                    <div class="flex items-center gap-1 text-gray-400 text-xs">
+                        <i class="fas fa-id-card"></i>
+                        <span>Credential ID: 312671676OCDMF2023</span>
+                    </div>
+                    <div class="certificate-buttons mt-2">
+                        <a href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=980F22AB42003AF8E2787A46904412704A5803C80E1509D98E4E8055B2DA3955" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="btn-secondary text-xs hover:bg-yellow-600 transition-colors">
+                            <i class="fas fa-external-link-alt mr-1"></i> View
+                        </a>
+                        <a href="./cetifications/eCertificate (1).pdf" 
+                           download="./cetifications/eCertificate (1).pdf" 
+                           class="btn-secondary text-xs hover:bg-yellow-600 transition-colors"
+                           onclick="showDownloadMessage('Oracle Cloud Data Management 2023 Certified Foundations Associate certificate downloaded successfully')">
+                            <i class="fas fa-download mr-1"></i> Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Oracle Cloud Infrastructure AI -->
+            <div class="certificate-card group">
+                <div class="flex items-start justify-between mb-4">
+                    <div>
+                        <h3 class="text-lg font-semibold text-white group-hover:text-yellow-400 transition-colors">Oracle Cloud Infrastructure 2024 Generative AI Certified Professional</h3>
+                        <p class="text-yellow-500 text-sm flex items-center gap-1">
+                            <i class="fas fa-building"></i> Oracle 
+                            <span class="text-gray-400 mx-1">|</span> 
+                            <i class="fas fa-calendar-alt"></i> July 2024
+                        </p>
+                    </div>
+                    <i class="fas fa-certificate text-yellow-500 text-xl"></i>
+                </div>
+                <p class="text-gray-300 text-sm mb-4">Certified professional in Oracle Cloud Infrastructure with specialization in Generative AI technologies.</p>
+                
+                <div class="certificate-actions">
+                    <div class="flex items-center gap-1 text-gray-400 text-xs">
+                        <i class="fas fa-id-card"></i>
+                        <span>Credential ID: 312671676OCI2024GAIOCP</span>
+                    </div>
+                    <div class="certificate-buttons mt-2">
+                        <a href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=4A9CABEEB389D51FF52C13F8217F4FF246017CBADAE072BC80906CF46721E4C2" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="btn-secondary text-xs hover:bg-yellow-600 transition-colors">
+                            <i class="fas fa-external-link-alt mr-1"></i> View
+                        </a>
+                        <a href="./cetifications/eCertificate (2).pdf" 
+                           download="./cetifications/eCertificate (2).pdf" 
+                           class="btn-secondary text-xs hover:bg-yellow-600 transition-colors"
+                           onclick="showDownloadMessage('Oracle Cloud Infrastructure 2024 Generative AI Certified Professional certificate downloaded successfully')">
+                            <i class="fas fa-download mr-1"></i> Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- AWS Cloud Essentials -->
+            <div class="certificate-card group">
+                <div class="flex items-start justify-between mb-4">
+                    <div>
+                        <h3 class="text-lg font-semibold text-white group-hover:text-yellow-400 transition-colors">AWS Cloud Essentials</h3>
+                        <p class="text-yellow-500 text-sm flex items-center gap-1">
+                            <i class="fab fa-aws"></i> Internship Studio 
+                            <span class="text-gray-400 mx-1">|</span> 
+                            <i class="fas fa-calendar-alt"></i> Feb–May 2024
+                        </p>
+                    </div>
+                    <i class="fas fa-certificate text-yellow-500 text-xl"></i>
+                </div>
+                <p class="text-gray-300 text-sm mb-4">Hands-on experience with AWS cloud services including EC2, S3, IAM, Lambda, and basic cloud architecture principles.</p>
+                
+                <div class="certificate-actions">
+                    <div class="flex items-center gap-1 text-gray-400 text-xs">
+                        <i class="fas fa-id-card"></i>
+                        <span>Credential ID: ISAWST207533</span>
+                    </div>
+                    <div class="certificate-buttons mt-2">
+                        <a href="https://cit2.internshipstudio.com/certificates/validate_certificate.php?verify=ISAWST207533" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="btn-secondary text-xs hover:bg-yellow-600 transition-colors">
+                            <i class="fas fa-external-link-alt mr-1"></i> View
+                        </a>
+                        <a href="./cetifications/Kushal Patel - AWS Internship - Training (3).pdf" 
+                           download="./cetifications/Kushal Patel - AWS Internship - Training (3).pdf" 
+                           class="btn-secondary text-xs hover:bg-yellow-600 transition-colors"
+                           onclick="showDownloadMessage('AWS Cloud Essentials certificate downloaded successfully')">
+                            <i class="fas fa-download mr-1"></i> Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- AI Internship -->
+            <div class="certificate-card group">
+                <div class="flex items-start justify-between mb-4">
+                    <div>
+                        <h3 class="text-lg font-semibold text-white group-hover:text-yellow-400 transition-colors">AI Internship (3 months)</h3>
+                        <p class="text-yellow-500 text-sm flex items-center gap-1">
+                            <i class="fas fa-robot"></i> Internship Studio 
+                            <span class="text-gray-400 mx-1">|</span> 
+                            <i class="fas fa-calendar-alt"></i> Feb–May 2024
+                        </p>
+                    </div>
+                    <i class="fas fa-certificate text-yellow-500 text-xl"></i>
+                </div>
+                <p class="text-gray-300 text-sm mb-4">Intensive AI/ML training covering machine learning algorithms, deep learning, neural networks, and practical implementation projects.</p>
+                
+                <div class="certificate-actions">
+                    <div class="flex items-center gap-1 text-gray-400 text-xs">
+                        <i class="fas fa-id-card"></i>
+                        <span>Credential ID: ISAFIT207533</span>
+                    </div>
+                    <div class="certificate-buttons mt-2">
+                        <a href="https://cit2.internshipstudio.com/certificates/validate_certificate.php?verify=ISAFIT207533" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="btn-secondary text-xs hover:bg-yellow-600 transition-colors">
+                            <i class="fas fa-external-link-alt mr-1"></i> View
+                        </a>
+                        <a href="./cetifications/Kushal Patel - Artificial Intelligence Internship - Training (2).pdf" 
+                           download="./cetifications/Kushal Patel - Artificial Intelligence Internship - Training (2).pdf" 
+                           class="btn-secondary text-xs hover:bg-yellow-600 transition-colors"
+                           onclick="showDownloadMessage('AI Internship certificate downloaded successfully')">
+                            <i class="fas fa-download mr-1"></i> Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- British Airways Data Science -->
+            <div class="certificate-card group">
+                <div class="flex items-start justify-between mb-4">
+                    <div>
+                        <h3 class="text-lg font-semibold text-white group-hover:text-yellow-400 transition-colors">British Airways – Data Science Virtual Experience</h3>
+                        <p class="text-yellow-500 text-sm flex items-center gap-1">
+                            <i class="fas fa-graduation-cap"></i> Forage 
+                            <span class="text-gray-400 mx-1">|</span> 
+                            <i class="fas fa-calendar-alt"></i> June 2024
+                        </p>
+                    </div>
+                    <i class="fas fa-certificate text-yellow-500 text-xl"></i>
+                </div>
+                <p class="text-gray-300 text-sm mb-4">Completed comprehensive data science simulation including customer booking analysis, predictive modeling, and data visualization.</p>
+                
+                <div class="certificate-actions">
+                    <div class="flex items-center gap-1 text-gray-400 text-xs">
+                        <i class="fas fa-id-card"></i>
+                        <span>Credential ID: LJRgJNkAKWPaYHoMT</span>
+                    </div>
+                    <div class="certificate-buttons mt-2">
+                        <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/tMjbs76F526fF5v3G/NjynCWzGSaWXQCxSX_tMjbs76F526fF5v3G_LXaworeBMGgJ8JwY7_1751565624339_completion_certificate.pdf" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="btn-secondary text-xs hover:bg-yellow-600 transition-colors">
+                            <i class="fas fa-external-link-alt mr-1"></i> View
+                        </a>
+                        <a href="./cetifications/British Airways certification.pdf" 
+                           download="./cetifications/British Airways certification.pdf" 
+                           class="btn-secondary text-xs hover:bg-yellow-600 transition-colors"
+                           onclick="showDownloadMessage('British Airways Data Science certificate downloaded successfully')">
+                            <i class="fas fa-download mr-1"></i> Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Walmart Advanced Software Engineering -->
+            <div class="certificate-card group">
+                <div class="flex items-start justify-between mb-4">
+                    <div>
+                        <h3 class="text-lg font-semibold text-white group-hover:text-yellow-400 transition-colors">Walmart USA – Advanced Software Engineering</h3>
+                        <p class="text-yellow-500 text-sm flex items-center gap-1">
+                            <i class="fas fa-graduation-cap"></i> Forage 
+                            <span class="text-gray-400 mx-1">|</span> 
+                            <i class="fas fa-calendar-alt"></i> June 2024
+                        </p>
+                    </div>
+                    <i class="fas fa-certificate text-yellow-500 text-xl"></i>
+                </div>
+                <p class="text-gray-300 text-sm mb-4">Advanced software engineering concepts including system design, database optimization, and scalable architecture patterns.</p>
+                
+                <div class="certificate-actions">
+                    <div class="flex items-center gap-1 text-gray-400 text-xs">
+                        <i class="fas fa-id-card"></i>
+                        <span>Credential ID: zF9xQujYSuti98xmi</span>
+                    </div>
+                    <div class="certificate-buttons mt-2">
+                        <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/prBZoAihniNijyD6d/oX6f9BbCL9kJDJzfg_prBZoAihniNijyD6d_LXaworeBMGgJ8JwY7_1751566381156_completion_certificate.pdf" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="btn-secondary text-xs hover:bg-yellow-600 transition-colors">
+                            <i class="fas fa-external-link-alt mr-1"></i> View
+                        </a>
+                        <a href="./cetifications/walmart completion_certificate.pdf" 
+                           download="./cetifications/walmart completion_certificate.pdf" 
+                           class="btn-secondary text-xs hover:bg-yellow-600 transition-colors"
+                           onclick="showDownloadMessage('Walmart Advanced Software Engineering certificate downloaded successfully')">
+                            <i class="fas fa-download mr-1"></i> Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Accenture Nordics Software Engineering -->
+            <div class="certificate-card group">
+                <div class="flex items-start justify-between mb-4">
+                    <div>
+                        <h3 class="text-lg font-semibold text-white group-hover:text-yellow-400 transition-colors">Accenture Nordics – Software Engineering</h3>
+                        <p class="text-yellow-500 text-sm flex items-center gap-1">
+                            <i class="fas fa-graduation-cap"></i> Forage 
+                            <span class="text-gray-400 mx-1">|</span> 
+                            <i class="fas fa-calendar-alt"></i> June 2024
+                        </p>
+                    </div>
+                    <i class="fas fa-certificate text-yellow-500 text-xl"></i>
+                </div>
+                <p class="text-gray-300 text-sm mb-4">Software engineering simulation focusing on agile development, code review processes, and enterprise-level application development.</p>
+                
+                <div class="certificate-actions">
+                    <div class="flex items-center gap-1 text-gray-400 text-xs">
+                        <i class="fas fa-id-card"></i>
+                        <span>Credential ID: sLrnkHomxTComaQha</span>
+                    </div>
+                    <div class="certificate-buttons mt-2">
+                        <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/xhih9yFWsf6AYfngd/HNpZwZcuYwona2d8Y_xhih9yFWsf6AYfngd_LXaworeBMGgJ8JwY7_1751569030563_completion_certificate.pdf" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="btn-secondary text-xs hover:bg-yellow-600 transition-colors">
+                            <i class="fas fa-external-link-alt mr-1"></i> View
+                        </a>
+                        <a href="./cetifications/accenture completion_certificate.pdf" 
+                           download="./cetifications/accenture completion_certificate.pdf" 
+                           class="btn-secondary text-xs hover:bg-yellow-600 transition-colors"
+                           onclick="showDownloadMessage('Accenture Nordics Software Engineering certificate downloaded successfully')">
+                            <i class="fas fa-download mr-1"></i> Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quantium Data Analytics -->
+            <div class="certificate-card group">
+                <div class="flex items-start justify-between mb-4">
+                    <div>
+                        <h3 class="text-lg font-semibold text-white group-hover:text-yellow-400 transition-colors">Quantium – Data Analytics & Software Engineering</h3>
+                        <p class="text-yellow-500 text-sm flex items-center gap-1">
+                            <i class="fas fa-graduation-cap"></i> Forage 
+                            <span class="text-gray-400 mx-1">|</span> 
+                            <i class="fas fa-calendar-alt"></i> June 2024
+                        </p>
+                    </div>
+                    <i class="fas fa-certificate text-yellow-500 text-xl"></i>
+                </div>
+                <p class="text-gray-300 text-sm mb-4">Data analytics and software engineering simulation with focus on retail analytics, customer segmentation, and predictive modeling.</p>
+                
+                <div class="certificate-actions">
+                    <div class="flex items-center gap-1 text-gray-400 text-xs">
+                        <i class="fas fa-id-card"></i>
+                        <span>Credential ID: eu2scznK3s9KDA8CN</span>
+                    </div>
+                    <div class="certificate-buttons mt-2">
+                        <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/32A6DqtsbF7LbKdcq/NkaC7knWtjSbi6aYv_32A6DqtsbF7LbKdcq_LXaworeBMGgJ8JwY7_1751571727925_completion_certificate.pdf" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="btn-secondary text-xs hover:bg-yellow-600 transition-colors">
+                            <i class="fas fa-external-link-alt mr-1"></i> View
+                        </a>
+                        <a href="./cetifications/quantium completion_certificate.pdf" 
+                           download="./cetifications/quantium completion_certificate.pdf" 
+                           class="btn-secondary text-xs hover:bg-yellow-600 transition-colors"
+                           onclick="showDownloadMessage('Quantium Data Analytics certificate downloaded successfully')">
+                            <i class="fas fa-download mr-1"></i> Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Telstra Software Engineering -->
+            <div class="certificate-card group">
+                <div class="flex items-start justify-between mb-4">
+                    <div>
+                        <h3 class="text-lg font-semibold text-white group-hover:text-yellow-400 transition-colors">Telstra AU – Software Engineering</h3>
+                        <p class="text-yellow-500 text-sm flex items-center gap-1">
+                            <i class="fas fa-graduation-cap"></i> Forage 
+                            <span class="text-gray-400 mx-1">|</span> 
+                            <i class="fas fa-calendar-alt"></i> June 2024
+                        </p>
+                    </div>
+                    <i class="fas fa-certificate text-yellow-500 text-xl"></i>
+                </div>
+                <p class="text-gray-300 text-sm mb-4">Software engineering simulation covering telecommunications systems, API development, and network programming concepts.</p>
+                
+                <div class="certificate-actions">
+                    <div class="flex items-center gap-1 text-gray-400 text-xs">
+                        <i class="fas fa-id-card"></i>
+                        <span>Credential ID: ntfkmjpm5P33jKb47</span>
+                    </div>
+                    <div class="certificate-buttons mt-2">
+                        <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/M6JGAwZ52SMusMEcK/2YgByQfSfZCkNSs4T_M6JGAwZ52SMusMEcK_LXaworeBMGgJ8JwY7_1751569155375_completion_certificate.pdf" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="btn-secondary text-xs hover:bg-yellow-600 transition-colors">
+                            <i class="fas fa-external-link-alt mr-1"></i> View
+                        </a>
+                        <a href="./cetifications/telstra completion_certificate.pdf" 
+                           download="./cetifications/telstra completion_certificate.pdf" 
+                           class="btn-secondary text-xs hover:bg-yellow-600 transition-colors"
+                           onclick="showDownloadMessage('Telstra Software Engineering certificate downloaded successfully')">
+                            <i class="fas fa-download mr-1"></i> Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- J.P. Morgan Software Engineering -->
+            <div class="certificate-card group">
+                <div class="flex items-start justify-between mb-4">
+                    <div>
+                        <h3 class="text-lg font-semibold text-white group-hover:text-yellow-400 transition-colors">J.P. Morgan – Software Engineering</h3>
+                        <p class="text-yellow-500 text-sm flex items-center gap-1">
+                            <i class="fas fa-graduation-cap"></i> Forage 
+                            <span class="text-gray-400 mx-1">|</span> 
+                            <i class="fas fa-calendar-alt"></i> April 2024
+                        </p>
+                    </div>
+                    <i class="fas fa-certificate text-yellow-500 text-xl"></i>
+                </div>
+                <p class="text-gray-300 text-sm mb-4">Financial software engineering simulation covering trading systems, risk management, and high-frequency trading algorithms.</p>
+                
+                <div class="certificate-actions">
+                    <div class="flex items-center gap-1 text-gray-400 text-xs">
+                        <i class="fas fa-id-card"></i>
+                        <span>Credential ID: Hf3ZfT3dZCWPR9GAi</span>
+                    </div>
+                    <div class="certificate-buttons mt-2">
+                        <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Sj7temL583QAYpHXD/E6McHJDKsQYh79moz_Sj7temL583QAYpHXD_LXaworeBMGgJ8JwY7_1751571093528_completion_certificate.pdf" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="btn-secondary text-xs hover:bg-yellow-600 transition-colors">
+                            <i class="fas fa-external-link-alt mr-1"></i> View
+                        </a>
+                        <a href="./cetifications/JP_completion_certificate.pdf" 
+                           download="./cetifications/JP_completion_certificate.pdf" 
+                           class="btn-secondary text-xs hover:bg-yellow-600 transition-colors"
+                           onclick="showDownloadMessage('J.P. Morgan Software Engineering certificate downloaded successfully')">
+                            <i class="fas fa-download mr-1"></i> Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Deloitte Australia Data Analytics -->
+            <div class="certificate-card group">
+                <div class="flex items-start justify-between mb-4">
+                    <div>
+                        <h3 class="text-lg font-semibold text-white group-hover:text-yellow-400 transition-colors">Deloitte Australia – Data Analytics</h3>
+                        <p class="text-yellow-500 text-sm flex items-center gap-1">
+                            <i class="fas fa-graduation-cap"></i> Forage 
+                            <span class="text-gray-400 mx-1">|</span> 
+                            <i class="fas fa-calendar-alt"></i> June 2024
+                        </p>
+                    </div>
+                    <i class="fas fa-certificate text-yellow-500 text-xl"></i>
+                </div>
+                <p class="text-gray-300 text-sm mb-4">Data analytics simulation focusing on business intelligence, data visualization, and insights generation for enterprise clients.</p>
+                
+                <div class="certificate-actions">
+                    <div class="flex items-center gap-1 text-gray-400 text-xs">
+                        <i class="fas fa-id-card"></i>
+                        <span>Credential ID: tcKPjNNt8QoCTJYqc</span>
+                    </div>
+                    <div class="certificate-buttons mt-2">
+                        <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/9PBTqmSxAf6zZTseP/io9DzWKe3PTsiS6GG_9PBTqmSxAf6zZTseP_LXaworeBMGgJ8JwY7_1751271275677_completion_certificate.pdf" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="btn-secondary text-xs hover:bg-yellow-600 transition-colors">
+                            <i class="fas fa-external-link-alt mr-1"></i> View
+                        </a>
+                        <a href="./cetifications/deloitte data.pdf" 
+                           download="./cetifications/deloitte data.pdf" 
+                           class="btn-secondary text-xs hover:bg-yellow-600 transition-colors"
+                           onclick="showDownloadMessage('Deloitte Australia Data Analytics certificate downloaded successfully')">
+                            <i class="fas fa-download mr-1"></i> Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Deloitte Technology -->
+            <div class="certificate-card group">
+                <div class="flex items-start justify-between mb-4">
+                    <div>
+                        <h3 class="text-lg font-semibold text-white group-hover:text-yellow-400 transition-colors">Deloitte Australia – Technology</h3>
+                        <p class="text-yellow-500 text-sm flex items-center gap-1">
+                            <i class="fas fa-graduation-cap"></i> Forage 
+                            <span class="text-gray-400 mx-1">|</span> 
+                            <i class="fas fa-calendar-alt"></i> June 2024
+                        </p>
+                    </div>
+                    <i class="fas fa-certificate text-yellow-500 text-xl"></i>
+                </div>
+                <p class="text-gray-300 text-sm mb-4">Technology consulting simulation focusing on IT strategy, system implementation, and technology solutions for enterprise clients.</p>
+                
+                <div class="certificate-actions">
+                    <div class="flex items-center gap-1 text-gray-400 text-xs">
+                        <i class="fas fa-id-card"></i>
+                        <span>Credential ID: 57Pfp8sHoLPAb3kWe</span>
+                    </div>
+                    <div class="certificate-buttons mt-2">
+                        <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/9PBTqmSxAf6zZTseP/udmxiyHeqYQLkTPvf_9PBTqmSxAf6zZTseP_LXaworeBMGgJ8JwY7_1751284387763_completion_certificate.pdf" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="btn-secondary text-xs hover:bg-yellow-600 transition-colors">
+                            <i class="fas fa-external-link-alt mr-1"></i> View
+                        </a>
+                        <a href="./cetifications/deloitte techno.pdf" 
+                           download="./cetifications/deloitte techno.pdf" 
+                           class="btn-secondary text-xs hover:bg-yellow-600 transition-colors"
+                           onclick="showDownloadMessage('Deloitte Australia Technology certificate downloaded successfully')">
+                            <i class="fas fa-download mr-1"></i> Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Programming & Web Basics -->
+            <div class="certificate-card group">
+                <div class="flex items-start justify-between mb-4">
+                    <div>
+                        <h3 class="text-lg font-semibold text-white group-hover:text-yellow-400 transition-colors">Programming & Web Basics</h3>
+                        <p class="text-yellow-500 text-sm flex items-center gap-1">
+                            <i class="fas fa-laptop-code"></i> Royal Technosoft Pvt. Ltd. 
+                            <span class="text-gray-400 mx-1">|</span> 
+                            <i class="fas fa-calendar-alt"></i> Sept–Dec 2024
+                        </p>
+                    </div>
+                    <i class="fas fa-certificate text-yellow-500 text-xl"></i>
+                </div>
+                <p class="text-gray-300 text-sm mb-4">Comprehensive training in programming fundamentals including C, C++, Java, HTML, CSS, JavaScript, and Python with hands-on projects.</p>
+                
+                <div class="certificate-actions">
+                    <div class="flex items-center gap-1 text-gray-400 text-xs">
+                        <i class="fas fa-id-card"></i>
+                        <span>Credential ID: RTS-PWB-2024</span>
+                    </div>
+                    <div class="certificate-buttons mt-2">
+                        <button class="btn-secondary text-xs hover:bg-yellow-600 transition-colors">
+                            <i class="fas fa-eye mr-1"></i> View
+                        </button>
+                        <a href="./cetifications/CPP Royal.pdf" 
+                           download="./cetifications/CPP Royal.pdf" 
+                           class="btn-secondary text-xs hover:bg-yellow-600 transition-colors"
+                           onclick="showDownloadMessage('Programming & Web Basics certificate downloaded successfully')">
+                            <i class="fas fa-download mr-1"></i> Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Ongoing Learning -->
+            <div class="certificate-card group">
+                <div class="flex items-start justify-between mb-4">
+                    <div>
+                        <h3 class="text-lg font-semibold text-white group-hover:text-yellow-400 transition-colors">Ongoing Learning</h3>
+                        <p class="text-yellow-500 text-sm flex items-center gap-1">
+                            <i class="fas fa-university"></i> Multiple Platforms 
+                            <span class="text-gray-400 mx-1">|</span> 
+                            <i class="fas fa-calendar-alt"></i> Expected Dec 2025
+                        </p>
+                    </div>
+                    <i class="fas fa-graduation-cap text-yellow-500 text-xl"></i>
+                </div>
+                <p class="text-gray-300 text-sm mb-4">Currently enrolled in advanced Machine Learning, AI, Deep Learning, and Full Stack Development courses across multiple platforms.</p>
+                
+                <div class="certificate-actions">
+                    <div class="flex items-center gap-1 text-gray-400 text-xs">
+                        <i class="fas fa-spinner fa-pulse"></i>
+                        <span>In Progress</span>
+                    </div>
+                    <div class="certificate-buttons mt-2">
+                        <button class="btn-secondary text-xs opacity-75 cursor-not-allowed" disabled>
+                            <i class="fas fa-hourglass-half mr-1"></i> In Progress
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+        <!-- Skills Section -->
+       <!-- Skills Section -->
+<!-- Skills Section -->
+<section id="skills" class="section-hidden">
+    <div class="glass-card rounded-xl p-8">
+        <h2 class="text-3xl font-bold text-white mb-6 gradient-text">Technical Skills</h2>
+        
+        <!-- Programming Languages -->
+        <div class="mb-8">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-xl font-semibold text-white flex items-center">
+                    <i class="fas fa-code mr-3 text-yellow-500"></i>
+                    Programming Languages
+                </h3>
+                <p class="text-gray-400 text-sm">Core languages I use for software development and problem solving</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                <div class="skill-item">
+                    <div class="skill-icon bg-blue-500">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <div class="skill-info">
+                        <span class="skill-name">Python</span>
+                        <span class="skill-level">Advanced</span>
+                        <p class="skill-desc text-xs text-gray-400 mt-1">AI/ML, automation, web development</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon bg-yellow-500">
+                        <i class="fab fa-js"></i>
+                    </div>
+                    <div class="skill-info">
+                        <span class="skill-name">JavaScript</span>
+                        <span class="skill-level">Advanced</span>
+                        <p class="skill-desc text-xs text-gray-400 mt-1">Full-stack web development</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon bg-red-500">
+                        <i class="fab fa-java"></i>
+                    </div>
+                    <div class="skill-info">
+                        <span class="skill-name">Java</span>
+                        <span class="skill-level">Proficient</span>
+                        <p class="skill-desc text-xs text-gray-400 mt-1">Application development</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon bg-blue-600">
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="skill-info">
+                        <span class="skill-name">C++</span>
+                        <span class="skill-level">Proficient</span>
+                        <p class="skill-desc text-xs text-gray-400 mt-1">Algorithm implementation</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon bg-purple-500">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="skill-info">
+                        <span class="skill-name">SQL</span>
+                        <span class="skill-level">Advanced</span>
+                        <p class="skill-desc text-xs text-gray-400 mt-1">Database queries & optimization</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Frontend Technologies -->
+        <div class="mb-8">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-xl font-semibold text-white flex items-center">
+                    <i class="fas fa-laptop-code mr-3 text-yellow-500"></i>
+                    Frontend Technologies
+                </h3>
+                <p class="text-gray-400 text-sm">Technologies for building responsive user interfaces</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                <div class="skill-item">
+                    <div class="skill-icon bg-blue-400">
+                        <i class="fab fa-react"></i>
+                    </div>
+                    <div class="skill-info">
+                        <span class="skill-name">React.js</span>
+                        <span class="skill-level">Advanced</span>
+                        <p class="skill-desc text-xs text-gray-400 mt-1">Component-based UI development</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon bg-orange-500">
+                        <i class="fab fa-html5"></i>
+                    </div>
+                    <div class="skill-info">
+                        <span class="skill-name">HTML5</span>
+                        <span class="skill-level">Expert</span>
+                        <p class="skill-desc text-xs text-gray-400 mt-1">Semantic web markup</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon bg-blue-300">
+                        <i class="fab fa-css3-alt"></i>
+                    </div>
+                    <div class="skill-info">
+                        <span class="skill-name">CSS3</span>
+                        <span class="skill-level">Advanced</span>
+                        <p class="skill-desc text-xs text-gray-400 mt-1">Styling & animations</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon bg-teal-400">
+                        <i class="fas fa-wind"></i>
+                    </div>
+                    <div class="skill-info">
+                        <span class="skill-name">Tailwind CSS</span>
+                        <span class="skill-level">Advanced</span>
+                        <p class="skill-desc text-xs text-gray-400 mt-1">Utility-first CSS framework</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon bg-purple-600">
+                        <i class="fab fa-bootstrap"></i>
+                    </div>
+                    <div class="skill-info">
+                        <span class="skill-name">Bootstrap</span>
+                        <span class="skill-level">Proficient</span>
+                        <p class="skill-desc text-xs text-gray-400 mt-1">Responsive layouts</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Backend Technologies -->
+        <div class="mb-8">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-xl font-semibold text-white flex items-center">
+                    <i class="fas fa-server mr-3 text-yellow-500"></i>
+                    Backend Technologies
+                </h3>
+                <p class="text-gray-400 text-sm">Server-side application development</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                <div class="skill-item">
+                    <div class="skill-icon bg-green-500">
+                        <i class="fab fa-node-js"></i>
+                    </div>
+                    <div class="skill-info">
+                        <span class="skill-name">Node.js</span>
+                        <span class="skill-level">Advanced</span>
+                        <p class="skill-desc text-xs text-gray-400 mt-1">JavaScript runtime</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon bg-gray-500">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <div class="skill-info">
+                        <span class="skill-name">Express.js</span>
+                        <span class="skill-level">Advanced</span>
+                        <p class="skill-desc text-xs text-gray-400 mt-1">Web application framework</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon bg-gray-300">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <div class="skill-info">
+                        <span class="skill-name">Flask</span>
+                        <span class="skill-level">Proficient</span>
+                        <p class="skill-desc text-xs text-gray-400 mt-1">Python microframework</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon bg-indigo-500">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <div class="skill-info">
+                        <span class="skill-name">RESTful APIs</span>
+                        <span class="skill-level">Advanced</span>
+                        <p class="skill-desc text-xs text-gray-400 mt-1">API design & implementation</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon bg-pink-500">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <div class="skill-info">
+                        <span class="skill-name">GraphQL</span>
+                        <span class="skill-level">Intermediate</span>
+                        <p class="skill-desc text-xs text-gray-400 mt-1">Query language for APIs</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Database & Cloud -->
+        <div class="mb-8">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-xl font-semibold text-white flex items-center">
+                    <i class="fas fa-database mr-3 text-yellow-500"></i>
+                    Database & Cloud
+                </h3>
+                <p class="text-gray-400 text-sm">Data storage and cloud computing solutions</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                <div class="skill-item">
+                    <div class="skill-icon bg-green-600">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="skill-info">
+                        <span class="skill-name">MongoDB</span>
+                        <span class="skill-level">Advanced</span>
+                        <p class="skill-desc text-xs text-gray-400 mt-1">NoSQL database</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon bg-blue-500">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="skill-info">
+                        <span class="skill-name">MySQL</span>
+                        <span class="skill-level">Proficient</span>
+                        <p class="skill-desc text-xs text-gray-400 mt-1">Relational database</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon bg-orange-400">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div class="skill-info">
+                        <span class="skill-name">Firebase</span>
+                        <span class="skill-level">Proficient</span>
+                        <p class="skill-desc text-xs text-gray-400 mt-1">Real-time database</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon bg-yellow-600">
+                        <i class="fab fa-aws"></i>
+                    </div>
+                    <div class="skill-info">
+                        <span class="skill-name">AWS</span>
+                        <span class="skill-level">Proficient</span>
+                        <p class="skill-desc text-xs text-gray-400 mt-1">Cloud services</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon bg-blue-400">
+                        <i class="fab fa-docker"></i>
+                    </div>
+                    <div class="skill-info">
+                        <span class="skill-name">Docker</span>
+                        <span class="skill-level">Intermediate</span>
+                        <p class="skill-desc text-xs text-gray-400 mt-1">Containerization</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- AI & Machine Learning -->
+        <div class="mb-8">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-xl font-semibold text-white flex items-center">
+                    <i class="fas fa-brain mr-3 text-yellow-500"></i>
+                    AI & Machine Learning
+                </h3>
+                <p class="text-gray-400 text-sm">Technologies for artificial intelligence</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                <div class="skill-item">
+                    <div class="skill-icon bg-orange-500">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="skill-info">
+                        <span class="skill-name">Scikit-learn</span>
+                        <span class="skill-level">Advanced</span>
+                        <p class="skill-desc text-xs text-gray-400 mt-1">Machine learning library</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon bg-blue-400">
+                        <i class="fas fa-table"></i>
+                    </div>
+                    <div class="skill-info">
+                        <span class="skill-name">Pandas & NumPy</span>
+                        <span class="skill-level">Advanced</span>
+                        <p class="skill-desc text-xs text-gray-400 mt-1">Data manipulation</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon bg-red-500">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <div class="skill-info">
+                        <span class="skill-name">TensorFlow</span>
+                        <span class="skill-level">Intermediate</span>
+                        <p class="skill-desc text-xs text-gray-400 mt-1">Deep learning framework</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon bg-green-500">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <div class="skill-info">
+                        <span class="skill-name">OpenCV</span>
+                        <span class="skill-level">Proficient</span>
+                        <p class="skill-desc text-xs text-gray-400 mt-1">Computer vision</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon bg-purple-500">
+                        <i class="fas fa-window-maximize"></i>
+                    </div>
+                    <div class="skill-info">
+                        <span class="skill-name">PyQt5</span>
+                        <span class="skill-level">Proficient</span>
+                        <p class="skill-desc text-xs text-gray-400 mt-1">Desktop applications</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tools & Technologies -->
+        <div class="mb-8">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-xl font-semibold text-white flex items-center">
+                    <i class="fas fa-tools mr-3 text-yellow-500"></i>
+                    Tools & Technologies
+                </h3>
+                <p class="text-gray-400 text-sm">Development tools and utilities</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                <div class="skill-item">
+                    <div class="skill-icon bg-orange-600">
+                        <i class="fab fa-git-alt"></i>
+                    </div>
+                    <div class="skill-info">
+                        <span class="skill-name">Git & GitHub</span>
+                        <span class="skill-level">Advanced</span>
+                        <p class="skill-desc text-xs text-gray-400 mt-1">Version control</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon bg-blue-500">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="skill-info">
+                        <span class="skill-name">VS Code</span>
+                        <span class="skill-level">Expert</span>
+                        <p class="skill-desc text-xs text-gray-400 mt-1">Code editor</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon bg-yellow-500">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="skill-info">
+                        <span class="skill-name">Jupyter</span>
+                        <span class="skill-level">Advanced</span>
+                        <p class="skill-desc text-xs text-gray-400 mt-1">Interactive computing</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon bg-orange-400">
+                        <i class="fas fa-paper-plane"></i>
+                    </div>
+                    <div class="skill-info">
+                        <span class="skill-name">Postman</span>
+                        <span class="skill-level">Proficient</span>
+                        <p class="skill-desc text-xs text-gray-400 mt-1">API testing</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon bg-gray-700">
+                        <i class="fas fa-terminal"></i>
+                    </div>
+                    <div class="skill-info">
+                        <span class="skill-name">Linux/Terminal</span>
+                        <span class="skill-level">Proficient</span>
+                        <p class="skill-desc text-xs text-gray-400 mt-1">Command line interface</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+        <!-- Projects Section -->
+<!-- Projects Section -->
+<section id="projects" class="section-hidden">
+    <div class="glass-card rounded-xl p-8">
+        <h2 class="text-3xl font-bold text-white mb-6 gradient-text">Projects</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Heart Attack Prediction -->
+            <div class="project-card">
+                <div class="mb-4">
+                    <div class="w-full h-48 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-heartbeat text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Heart Attack Prediction</h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        Machine learning model to predict heart attack risk with 89% accuracy using patient health metrics.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Python</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Scikit-learn</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Flask</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <a href="https://github.com/Kushal1250?tab=repositories" class="btn-secondary text-xs">
+                            <i class="fab fa-github mr-1"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Jarvis AI Assistant -->
+            <div class="project-card">
+                <div class="mb-4">
+                    <div class="w-full h-48 bg-gradient-to-br from-blue-500 to-purple-500 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-robot text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Jarvis AI Assistant</h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        Voice-controlled AI assistant that performs tasks, answers queries, and automates daily activities.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Python</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">SpeechRecognition</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">PyQt5</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <a href="https://github.com/Kushal1250?tab=repositories" class="btn-secondary text-xs">
+                            <i class="fab fa-github mr-1"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Python Spam Detection -->
+            <div class="project-card">
+                <div class="mb-4">
+                    <div class="w-full h-48 bg-gradient-to-br from-red-500 to-pink-500 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-shield-alt text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Python Spam Detection</h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        Machine learning model to classify emails as spam or not spam using natural language processing.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Python</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">NLTK</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Scikit-learn</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <a href="https://github.com/Kushal1250?tab=repositories" class="btn-secondary text-xs">
+                            <i class="fab fa-github mr-1"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- FundLaunch -->
+            <div class="project-card">
+                <div class="mb-4">
+                    <div class="w-full h-48 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-rocket text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">FundLaunch</h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        Crowdfunding platform for startups and creative projects with payment integration and progress tracking.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">React</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Node.js</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Stripe API</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <a href="https://github.com/Kushal1250?tab=repositories" class="btn-secondary text-xs">
+                            <i class="fab fa-github mr-1"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- PayBill -->
+            <div class="project-card">
+                <div class="mb-4">
+                    <div class="w-full h-48 bg-gradient-to-br from-green-500 to-teal-500 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-credit-card text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">PayBill</h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        Online billing system with invoice generation, payment processing, and receipt management.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Java</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Spring Boot</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">MySQL</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <a href="https://github.com/Kushal1250?tab=repositories" class="btn-secondary text-xs">
+                            <i class="fab fa-github mr-1"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- LogiRetail Hub -->
+            <div class="project-card">
+                <div class="mb-4">
+                    <div class="w-full h-48 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-shopping-bag text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">LogiRetail Hub</h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        Retail management system with inventory tracking, sales analytics, and supplier management.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Python</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Django</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">PostgreSQL</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <a href="https://github.com/Kushal1250?tab=repositories" class="btn-secondary text-xs">
+                            <i class="fab fa-github mr-1"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- ParkSmart -->
+            <div class="project-card">
+                <div class="mb-4">
+                    <div class="w-full h-48 bg-gradient-to-br from-blue-500 to-purple-500 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-parking text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">ParkSmart</h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        Smart parking solution with real-time space availability, reservation system, and payment integration.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">React Native</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Firebase</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Google Maps API</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <a href="https://github.com/Kushal1250?tab=repositories" class="btn-secondary text-xs">
+                            <i class="fab fa-github mr-1"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Enterprise Expense Tracker -->
+            <div class="project-card">
+                <div class="mb-4">
+                    <div class="w-full h-48 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-chart-line text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Enterprise Expense Tracker</h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        Corporate expense management system with multi-user support, approval workflows, and reporting.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Angular</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Spring Boot</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">MongoDB</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <a href="https://github.com/Kushal1250?tab=repositories" class="btn-secondary text-xs">
+                            <i class="fab fa-github mr-1"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Camera Text Detection -->
+            <div class="project-card">
+                <div class="mb-4">
+                    <div class="w-full h-48 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-camera text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Camera Text Detection</h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        Real-time text detection from camera feed using OpenCV and Tesseract OCR.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Python</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">OpenCV</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Tesseract</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <a href="https://github.com/Kushal1250?tab=repositories" class="btn-secondary text-xs">
+                            <i class="fab fa-github mr-1"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Online Trading Platform -->
+            <div class="project-card">
+                <div class="mb-4">
+                    <div class="w-full h-48 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-chart-line text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Online Trading Platform</h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        Simulated stock trading platform with real-time data visualization and trading capabilities.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">React</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Node.js</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">WebSocket</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <a href="https://github.com/Kushal1250?tab=repositories" class="btn-secondary text-xs">
+                            <i class="fab fa-github mr-1"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Hotel Management System -->
+            <div class="project-card">
+                <div class="mb-4">
+                    <div class="w-full h-48 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-hotel text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Hotel Management System</h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        Comprehensive system for hotel operations including reservations, room management, and billing.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Java</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Spring Boot</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">MySQL</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <a href="https://github.com/Kushal1250?tab=repositories" class="btn-secondary text-xs">
+                            <i class="fab fa-github mr-1"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Hospital Management System -->
+            <div class="project-card">
+                <div class="mb-4">
+                    <div class="w-full h-48 bg-gradient-to-br from-blue-500 to-purple-500 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-hospital text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Hospital Management System</h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        Digital solution for patient records, appointments, and hospital administration.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">PHP</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Laravel</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">MySQL</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <a href="https://github.com/Kushal1250?tab=repositories" class="btn-secondary text-xs">
+                            <i class="fab fa-github mr-1"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Airline Reservation System -->
+            <div class="project-card">
+                <div class="mb-4">
+                    <div class="w-full h-48 bg-gradient-to-br from-green-500 to-teal-500 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-plane text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Airline Reservation System</h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        Flight booking system with seat selection, payment processing, and itinerary management.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">C#</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">.NET</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">SQL Server</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <a href="https://github.com/Kushal1250?tab=repositories" class="btn-secondary text-xs">
+                            <i class="fab fa-github mr-1"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- ATM Simulation -->
+            <div class="project-card">
+                <div class="mb-4">
+                    <div class="w-full h-48 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-money-bill-wave text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">ATM Simulation</h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        ATM system simulation with account management, transactions, and receipt generation.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Java</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Swing</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">OOP</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <a href="https://github.com/Kushal1250?tab=repositories" class="btn-secondary text-xs">
+                            <i class="fab fa-github mr-1"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Photo/Video to Cartoon -->
+            <div class="project-card">
+                <div class="mb-4">
+                    <div class="w-full h-48 bg-gradient-to-br from-red-500 to-pink-500 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-paint-brush text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Photo/Video to Cartoon</h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        Image and video processing tool that converts media into cartoon-style visuals.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Python</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">OpenCV</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">PIL</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <a href="https://github.com/Kushal1250?tab=repositories" class="btn-secondary text-xs">
+                            <i class="fab fa-github mr-1"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Online Exam System -->
+            <div class="project-card">
+                <div class="mb-4">
+                    <div class="w-full h-48 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-graduation-cap text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Online Exam System</h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        Secure online examination platform with timer, auto-grading, and result analytics.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">PHP</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">JavaScript</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">MySQL</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <a href="https://github.com/Kushal1250?tab=repositories" class="btn-secondary text-xs">
+                            <i class="fab fa-github mr-1"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Student Report Card System -->
+            <div class="project-card">
+                <div class="mb-4">
+                    <div class="w-full h-48 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-file-alt text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Student Report Card System</h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        Automated report card generation with performance analysis and visualization.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Python</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Pandas</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Matplotlib</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <a href="https://github.com/Kushal1250?tab=repositories" class="btn-secondary text-xs">
+                            <i class="fab fa-github mr-1"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Supermarket Billing System -->
+            <div class="project-card">
+                <div class="mb-4">
+                    <div class="w-full h-48 bg-gradient-to-br from-blue-500 to-purple-500 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-cash-register text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Supermarket Billing System</h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        Point-of-sale system with inventory management and sales reporting.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Java</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Swing</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">MySQL</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <a href="https://github.com/Kushal1250?tab=repositories" class="btn-secondary text-xs">
+                            <i class="fab fa-github mr-1"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Train Reservation System -->
+            <div class="project-card">
+                <div class="mb-4">
+                    <div class="w-full h-48 bg-gradient-to-br from-green-500 to-teal-500 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-train text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Train Reservation System</h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        Railway ticket booking platform with seat availability and scheduling.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">C++</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">File Handling</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <a href="https://github.com/Kushal1250?tab=repositories" class="btn-secondary text-xs">
+                            <i class="fab fa-github mr-1"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Video Conference App -->
+            <div class="project-card">
+                <div class="mb-4">
+                    <div class="w-full h-48 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-video text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Video Conference App</h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        WebRTC-based video conferencing solution with chat and screen sharing.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">JavaScript</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">WebRTC</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Socket.io</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <a href="https://github.com/Kushal1250?tab=repositories" class="btn-secondary text-xs">
+                            <i class="fab fa-github mr-1"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Emotion Music Recommender -->
+            <div class="project-card">
+                <div class="mb-4">
+                    <div class="w-full h-48 bg-gradient-to-br from-red-500 to-pink-500 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-music text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Emotion Music Recommender</h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        AI system that recommends music based on facial emotion detection.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Python</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">OpenCV</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Spotify API</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <a href="https://github.com/Kushal1250?tab=repositories" class="btn-secondary text-xs">
+                            <i class="fab fa-github mr-1"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- People Tracking System -->
+            <div class="project-card">
+                <div class="mb-4">
+                    <div class="w-full h-48 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-user-friends text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">People Tracking System</h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        Computer vision application for tracking and counting people in video streams.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Python</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">YOLOv3</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">OpenCV</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <a href="https://github.com/Kushal1250?tab=repositories" class="btn-secondary text-xs">
+                            <i class="fab fa-github mr-1"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Phone Number Tracker -->
+            <div class="project-card">
+                <div class="mb-4">
+                    <div class="w-full h-48 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-phone-alt text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Phone Number Tracker</h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        Application to track phone number details and location using public APIs.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Python</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Flask</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">API Integration</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <a href="https://github.com/Kushal1250?tab=repositories" class="btn-secondary text-xs">
+                            <i class="fab fa-github mr-1"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Instagram History Viewer -->
+            <div class="project-card">
+                <div class="mb-4">
+                    <div class="w-full h-48 bg-gradient-to-br from-blue-500 to-purple-500 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fab fa-instagram text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Instagram History Viewer</h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        Tool to view and analyze Instagram browsing history and activity.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Python</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Selenium</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Data Analysis</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <a href="https://github.com/Kushal1250?tab=repositories" class="btn-secondary text-xs">
+                            <i class="fab fa-github mr-1"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- All Maths Solution -->
+            <div class="project-card">
+                <div class="mb-4">
+                    <div class="w-full h-48 bg-gradient-to-br from-green-500 to-teal-500 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-square-root-alt text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">All Maths Solution</h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        Comprehensive math problem solver with step-by-step solutions for various topics.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Python</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">SymPy</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Flask</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <a href="https://github.com/Kushal1250?tab=repositories" class="btn-secondary text-xs">
+                            <i class="fab fa-github mr-1"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Notepad Application -->
+            <div class="project-card">
+                <div class="mb-4">
+                    <div class="w-full h-48 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-edit text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Notepad Application</h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        Feature-rich text editor with syntax highlighting and file management.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Java</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Swing</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <a href="https://github.com/Kushal1250?tab=repositories" class="btn-secondary text-xs">
+                            <i class="fab fa-github mr-1"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- WiFi Crack Tool -->
+            <div class="project-card">
+                <div class="mb-4">
+                    <div class="w-full h-48 bg-gradient-to-br from-red-500 to-pink-500 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-wifi text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">WiFi Crack Tool</h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        Security research tool for WiFi network analysis (educational purposes only).
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Python</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Security</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <a href="https://github.com/Kushal1250?tab=repositories" class="btn-secondary text-xs">
+                            <i class="fab fa-github mr-1"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Quiz Application -->
+            <div class="project-card">
+                <div class="mb-4">
+                    <div class="w-full h-48 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-question-circle text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Quiz Application</h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        Interactive quiz platform with multiple question types and scoring system.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">JavaScript</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">React</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Firebase</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <a href="https://github.com/Kushal1250?tab=repositories" class="btn-secondary text-xs">
+                            <i class="fab fa-github mr-1"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Plagiarism Checker -->
+            <div class="project-card">
+                <div class="mb-4">
+                    <div class="w-full h-48 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-search text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Plagiarism Checker</h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        Text similarity detection tool using natural language processing techniques.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Python</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">NLTK</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Flask</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <a href="https://github.com/Kushal1250?tab=repositories" class="btn-secondary text-xs">
+                            <i class="fab fa-github mr-1"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Augmented Reality App -->
+            <div class="project-card">
+                <div class="mb-4">
+                    <div class="w-full h-48 bg-gradient-to-br from-blue-500 to-purple-500 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-vr-cardboard text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Augmented Reality App</h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        Mobile application demonstrating augmented reality features and interactions.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Unity</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">C#</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">ARCore</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <a href="https://github.com/Kushal1250?tab=repositories" class="btn-secondary text-xs">
+                            <i class="fab fa-github mr-1"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Reddit/Twitter Bots -->
+            <div class="project-card">
+                <div class="mb-4">
+                    <div class="w-full h-48 bg-gradient-to-br from-green-500 to-teal-500 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fab fa-reddit text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Reddit/Twitter Bots</h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        Automated bots for social media platforms performing various tasks.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Python</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">API</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Automation</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <a href="https://github.com/Kushal1250?tab=repositories" class="btn-secondary text-xs">
+                            <i class="fab fa-github mr-1"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Telegram Horoscope Bot -->
+            <div class="project-card">
+                <div class="mb-4">
+                    <div class="w-full h-48 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-star text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Telegram Horoscope Bot</h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        Telegram chatbot that provides daily horoscopes and astrological insights.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Python</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Telegram API</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <a href="https://github.com/Kushal1250?tab=repositories" class="btn-secondary text-xs">
+                            <i class="fab fa-github mr-1"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- React App and DOM -->
+            <div class="project-card">
+                <div class="mb-4">
+                    <div class="w-full h-48 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fab fa-react text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">React App and DOM</h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        Collection of React components demonstrating virtual DOM manipulation.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">React</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">JavaScript</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <a href="https://github.com/Kushal1250?tab=repositories" class="btn-secondary text-xs">
+                            <i class="fab fa-github mr-1"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Python Editor -->
+            <div class="project-card">
+                <div class="mb-4">
+                    <div class="w-full h-48 bg-gradient-to-br from-blue-500 to-purple-500 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-code text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Python Editor</h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        Online Python code editor with syntax highlighting and execution capabilities.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Python</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Flask</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Ace Editor</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <a href="https://github.com/Kushal1250?tab=repositories" class="btn-secondary text-xs">
+                            <i class="fab fa-github mr-1"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- 26 Full Games Collection -->
+            <div class="project-card">
+                <div class="mb-4">
+                    <div class="w-full h-48 bg-gradient-to-br from-green-500 to-teal-500 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-gamepad text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">26 Full Games Collection</h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        Collection of 26 simple games developed using various programming languages.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Python</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">JavaScript</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Java</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <a href="https://github.com/Kushal1250?tab=repositories" class="btn-secondary text-xs">
+                            <i class="fab fa-github mr-1"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Mac Utility App -->
+            <div class="project-card">
+                <div class="mb-4">
+                    <div class="w-full h-48 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fab fa-apple text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Mac Utility App</h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        macOS utility application with various productivity tools and features.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Swift</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">macOS</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <a href="https://github.com/Kushal1250?tab=repositories" class="btn-secondary text-xs">
+                            <i class="fab fa-github mr-1"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Expense Tracker -->
+            <div class="project-card">
+                <div class="mb-4">
+                    <div class="w-full h-48 bg-gradient-to-br from-red-500 to-pink-500 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-wallet text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Expense Tracker</h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        Personal finance application to track expenses, income, and budgeting.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">React</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">Node.js</span>
+                        <span class="px-2 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 text-xs rounded">MongoDB</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <a href="https://github.com/Kushal1250?tab=repositories" class="btn-secondary text-xs">
+                            <i class="fab fa-github mr-1"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+        <!-- Contact Section -->
+        <!-- Contact Section -->
+<section id="contact" class="section-hidden">
+    <div class="glass-card rounded-xl p-8">
+        <h2 class="text-3xl font-bold text-white mb-6 gradient-text">Contact Me</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div>
+                <h3 class="text-xl font-semibold text-white mb-4">Get In Touch</h3>
+                <p class="text-gray-300 mb-6">
+                    I'm always open to discussing new opportunities, collaborations, or just having a chat about technology. Feel free to reach out!
+                </p>
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center">
+                            <i class="fas fa-envelope text-black"></i>
+                        </div>
+                        <div>
+                            <p class="text-gray-400 text-sm">Email</p>
+                            <p class="text-white">KUSHALPATEL.ict22@adaniuni.ac.in</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center">
+                            <i class="fas fa-phone text-black"></i>
+                        </div>
+                        <div>
+                            <p class="text-gray-400 text-sm">Phone</p>
+                            <p class="text-white">+91 (901) 626-1380</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center">
+                            <i class="fas fa-map-marker-alt text-black"></i>
+                        </div>
+                        <div>
+                            <p class="text-gray-400 text-sm">Location</p>
+                            <p class="text-white">Ahmedabad, Gujarat, India</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Map Section -->
+                <div class="mt-8">
+                    <h3 class="text-xl font-semibold text-white mb-4">Find Me Here</h3>
+                    <div class="glass-effect rounded-lg overflow-hidden" style="height: 300px;">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117763.613952076!2d72.43965560000001!3d22.9734228!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e848aba5bd449%3A0x4fcedd11614f6516!2sAhmedabad%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h3 class="text-xl font-semibold text-white mb-4">Send Message</h3>
+                <form id="contactForm" class="space-y-4">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary w-full">
+                        <i class="fas fa-paper-plane mr-2"></i>
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- Notification -->
+    <div id="notification" class="notification"></div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content glass-card rounded-xl p-8">
+            <div class="flex justify-between items-center mb-4">
+                <h3 id="modalTitle" class="text-xl font-semibold text-white"></h3>
+                <button id="closeModal" class="text-gray-400 hover:text-white">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="modalBody" class="text-gray-300"></div>
+        </div>
+    </div>
+<script src="assets/js/script.js"></script>
+    </body>
+</html>
+
